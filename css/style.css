@@ -88,3 +88,13 @@ canvas {
 #menuTools {
     margin-right: 2%;
 }
+
+#hideSidebar {
+    transform: rotate(180deg);
+}
+
+.sidebarTittle {
+    display: flex;
+    font-weight: bold;
+    font-size: 24px;
+}

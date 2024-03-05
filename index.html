@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="css/style.css">
     <title>RLCircuit Designer</title>
 </head>
@@ -17,8 +18,10 @@
     </div>
 
     <div id="sidebar">
-        <img src="img/sidebar.png" alt="sidebar" id="hideSidebar" class="icon">
-        <p>Obliczenia układów...</p>
+        <div class="sidebarTittle">
+            <img src="img/sidebar.png" alt="sidebar" id="hideSidebar" class="icon">
+            <p>RLC Circuit Analysis</p>
+        </div>
     </div>
 
     <canvas id="drawingCanvas"></canvas>
@@ -28,6 +31,7 @@
        <span id="mousePosition" class="footerText">0, 0</span>
     </footer>
 
-    <script src="js/app.js"></script>
+    <script type="module" src="js/app.js"></script>
+
 </body>
 </html>
