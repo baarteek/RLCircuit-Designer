@@ -15,6 +15,9 @@ body, html {
 }
 
 footer {
+    display: flex;
+    align-items: center;
+    justify-content: start;
     padding: 0.3%;
     padding-left: 5%;
 }
@@ -37,7 +40,7 @@ footer {
     background-color: #19376D;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 1%;
+    padding-top: 0.5%;
 }
 
 #sidebar p {
@@ -81,7 +84,8 @@ canvas {
     font-size: 20px;
     font-weight: bold;
     vertical-align: middle;
-    margin-left: 5px;
+    margin-right: 2%;
+    margin-left: 0.5%;
 }
 
 
@@ -95,6 +99,7 @@ canvas {
 
 .sidebarTittle {
     display: flex;
+    align-items: center;
     font-weight: bold;
     font-size: 24px;
 }
