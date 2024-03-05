@@ -1,4 +1,90 @@
-body {
-    background-color: black;
-    color: aliceblue;
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#toolbar, footer {
+    flex-shrink: 0;
+    background-color: #021836;
+    color: #fff;
+}
+
+footer {
+    padding: 0.3%;
+    padding-left: 5%;
+}
+
+#toolbar {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+#sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    background-color: #19376D;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 1%;
+}
+
+#sidebar p {
+    color: white;
+    padding: 10px;
+}
+
+#sidebar img {
+    margin: 5%;
+}
+
+#drawingCanvas, .canvas-container {
+    flex-grow: 1;
+    position: relative; 
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    background-color: #0f0f0f; 
+}
+
+.icon {
+    width: 36px;
+    height: 36px;
+    vertical-align: middle;
+}
+
+.icon:hover {
+    scale: 1.2;
+    cursor: pointer;
+}
+
+.footerIcon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.footerText {
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+
+#menuTools {
+    margin-right: 2%;
 }
