@@ -103,3 +103,44 @@ canvas {
     font-weight: bold;
     font-size: 24px;
 }
+
+#drawingTools {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 5%;
+    margin-right: 10%;
+}
+
+.componentDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 50%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+.componentDiv:hover {
+    cursor: pointer;
+    background-color: #19376D;
+    scale: 1.1;
+}
+
+.componentImg {
+    width: 64px;
+    height: 64px;
+}
+
+.componentText {
+    display: block;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 16px;
+}
+

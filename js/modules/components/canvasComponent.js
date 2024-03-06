@@ -12,6 +12,7 @@ export const resizeCanvas = () => {
     canvas.style.height = `${mainHeight}px`;
     canvas.height = mainHeight;
     canvas.width = sidebar.style.width === "35%" ? window.innerWidth - 250 : window.innerWidth;
+    ctx.scale(scale, scale);
     renderScene();
 };
 
@@ -62,7 +63,7 @@ const renderScene = () => {
 const zoom = (event) => {
     event.preventDefault();
     const scaleStep = 0.1;
-    const minScale = 0.5;
+    const minScale = 0.1;
     const oldScale = scale;
     const maxScale = 5;
     const direction = event.deltaY < 0 ? 1 : -1;
@@ -76,8 +77,8 @@ const zoom = (event) => {
 
     ctx.setTransform(1,0,0,1,0,0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.translate(dx, dy);
     ctx.scale(scale, scale);
+    ctx.translate(dx, dy);
 
     renderScene();
     printScaleText();
