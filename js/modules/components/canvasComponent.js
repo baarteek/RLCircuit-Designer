@@ -45,7 +45,7 @@ const printMousePosition = (event) => {
 
 const printScaleText = () => {
     let rounded = parseFloat((scale * 100).toFixed(0));
-    scaleText.innerHTML = "Scale: " + rounded + "%";
+    scaleText.innerHTML = rounded + "%";
 };
 
 const renderScene = () => {
