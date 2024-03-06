@@ -1,10 +1,10 @@
 const canvas = document.getElementById("drawingCanvas");
+const ctx = canvas.getContext("2d");
 const toolbar = document.getElementById("toolbar");
 const footer = document.getElementById("footer");
 const sidebar = document.getElementById("sidebar");
 const mousePositionText = document.getElementById("mousePositionText")
 const scaleText = document.getElementById("scaleText");
-const ctx = canvas.getContext("2d");
 let scale = 1;
 
 export const resizeCanvas = () => {
@@ -12,16 +12,20 @@ export const resizeCanvas = () => {
     canvas.style.height = `${mainHeight}px`;
     canvas.height = mainHeight;
     canvas.width = sidebar.style.width === "35%" ? window.innerWidth - 250 : window.innerWidth;
+    renderScene();
 };
 
 export const registerCanvasEvents = () => {
+    const canvas = document.getElementById("drawingCanvas");
     window.addEventListener("resize", resizeCanvas);
     canvas.addEventListener('mousemove', (event) => printMousePosition(event));
     canvas.addEventListener('mouseleave', () =>  mousePositionText.innerHTML = "Outside drawing area");
     canvas.addEventListener('wheel', zoom);
+    resizeCanvas();
 };
 
 const getMousePosition = (event) => {
+    const canvas = document.getElementById("drawingCanvas");
     const rect = canvas.getBoundingClientRect();
     return {
         x: event.clientX - rect.left, 
@@ -39,16 +43,16 @@ const printMousePosition = (event) => {
 };
 
 const printScaleText = () => {
-    let rounded = parseFloat(scale.toFixed(1));
-    scaleText.innerHTML = "Scale: x" + rounded;
+    let rounded = parseFloat((scale * 100).toFixed(0));
+    scaleText.innerHTML = "Scale: " + rounded + "%";
 };
 
 const renderScene = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
-    ctx.scale(scale, scale);
 
     ctx.beginPath();
+    ctx.strokeStyle = "#fff";
     ctx.arc(100, 100, 50, 0, 2 * Math.PI);
     ctx.stroke();
 
@@ -58,11 +62,23 @@ const renderScene = () => {
 const zoom = (event) => {
     event.preventDefault();
     const scaleStep = 0.1;
-    const minScale = 0.1;
+    const minScale = 0.5;
+    const oldScale = scale;
     const maxScale = 5;
     const direction = event.deltaY < 0 ? 1 : -1;
     scale += direction * scaleStep;
     scale = Math.min(Math.max(minScale, scale), maxScale);
+
+    const mousePos = getMousePosition(event);
+    const scaleRatio = scale / oldScale;
+    const dx = (mousePos.x - mousePos.x * scaleRatio);
+    const dy = (mousePos.y - mousePos.y * scaleRatio);
+
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.translate(dx, dy);
+    ctx.scale(scale, scale);
+
     renderScene();
     printScaleText();
 };
