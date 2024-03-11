@@ -5,5 +5,5 @@ import { registerToolbarEvents } from "./modules/components/toolbarComponent.js"
 document.addEventListener('DOMContentLoaded', () => {
     registerSidebarEvents();
     registerCanvasEvents();
-    registerToolbarEvents();
+    registerToolbarEvents(event);
 });
